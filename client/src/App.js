@@ -18,26 +18,11 @@ import Layout from './components/Layout';
 // In development (localhost), use empty string
 const getBasename = () => {
   // Check the current URL path first
-  // This allows the app to work if accessed via /crm-testfinal in any environment
   const pathname = window.location.pathname;
   if (pathname.startsWith('/crm-testfinal')) {
     return '/crm-testfinal';
   }
-
-  // In development, if not using the repo path, default to root
-  if (process.env.NODE_ENV === 'development') {
-    return '';
-  }
-
-  // In production (GitHub Pages), fallback to other detections
-  // Fallback: use PUBLIC_URL or default
-  const publicUrl = process.env.PUBLIC_URL || '';
-  if (publicUrl) {
-    return publicUrl.startsWith('http') ? new URL(publicUrl).pathname : publicUrl;
-  }
-
-  // Default fallback
-  return '/crm-testfinal';
+  return '';
 };
 
 function App() {
